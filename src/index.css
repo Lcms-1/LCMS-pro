@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  body {
+    background-color: #f8fafc;
+    color: #1B2A41;
+    font-size: 16px;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .dark body {
+    background-color: #0b1320;
+    color: #f8fafc;
+  }
+
+  /* TYPOGRAPHY MANDATES:
+     1. Main Section Headings: Poppins SemiBold (600), Dark Navy (#1B2A41)
+     2. Card Titles: Poppins SemiBold (600), Dark Green (#0F5132)
+     3. Descriptions: Poppins Regular (400), Dark Gray (#495057)
+     4. Statistics and Numbers: Poppins Bold (700)
+     5. Small Labels: Poppins Medium (500), Medium Gray (#495057)
+  */
+
+  /* Form input & select high contrast readability */
+  input, select, textarea, option {
+    color: #1B2A41;
+    background-color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .dark input, .dark select, .dark textarea, .dark option {
+    color: #f8fafc;
+    background-color: #1e293b;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Table headers readability */
+  th {
+    color: #1B2A41;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .dark th {
+    color: #f1f5f9;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+/* HIGH CONTRAST & TYPOGRAPHY ENFORCEMENT RULES */
+
+/* 1. Main Section Headings (light mode) */
+:not(.dark) .main-heading,
+:not(.dark) .section-heading,
+:not(.dark) .bg-white h1,
+:not(.dark) .bg-slate-50 h1,
+:not(.dark) .bg-white h2,
+:not(.dark) .bg-slate-50 h2 {
+  color: #1B2A41;
+  font-weight: 600;
+}
+
+/* 2. Card Titles (light mode) */
+:not(.dark) .card-title,
+:not(.dark) .bg-white h3,
+:not(.dark) .bg-slate-50 h3 {
+  color: #0F5132;
+  font-weight: 600;
+}
+
+/* 3. Descriptions (light mode) */
+:not(.dark) .description-text,
+:not(.dark) .card-description {
+  color: #495057;
+  font-weight: 400;
+}
+
+/* 4. Statistics and Numbers */
+.stat-number, .stat-value, .number-highlight {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+/* 5. Small Labels */
+.small-label {
+  color: #495057;
+  font-weight: 500;
+}
+
+/* Prevent low-contrast light gray or white text on white/light background */
+:not(.dark) .bg-white .text-white,
+:not(.dark) .bg-white .text-slate-100,
+:not(.dark) .bg-white .text-slate-200,
+:not(.dark) .bg-slate-50 .text-white,
+:not(.dark) .bg-slate-50 .text-slate-100,
+:not(.dark) .bg-slate-50 .text-slate-200 {
+  color: #1B2A41 !important;
+}
+
+:not(.dark) .bg-white .text-slate-400,
+:not(.dark) .bg-slate-50 .text-slate-400,
+:not(.dark) .bg-white .text-gray-400,
+:not(.dark) .bg-slate-50 .text-gray-400 {
+  color: #495057 !important;
+}
+
+/* 6. Dark Green & Dark Navy Containers (Header, Hero Cards, Dark Buttons, Dark Badges) */
+.bg-\[\#014421\], .bg-\[\#012d15\], .bg-\[\#013318\], .bg-\[\#0a2e19\], 
+.bg-emerald-950, .bg-emerald-900, .bg-slate-900, .bg-slate-950, .bg-indigo-950, .bg-navy-900 {
+  color: #ffffff !important;
+}
+
+.bg-\[\#014421\] h1, .bg-\[\#014421\] h2, .bg-\[\#014421\] h3, .bg-\[\#014421\] h4, .bg-\[\#014421\] p, .bg-\[\#014421\] span, .bg-\[\#014421\] label,
+.bg-\[\#012d15\] h1, .bg-\[\#012d15\] h2, .bg-\[\#012d15\] h3, .bg-\[\#012d15\] h4, .bg-\[\#012d15\] p, .bg-\[\#012d15\] span,
+.bg-\[\#013318\] h1, .bg-\[\#013318\] h2, .bg-\[\#013318\] h3, .bg-\[\#013318\] h4, .bg-\[\#013318\] p, .bg-\[\#013318\] span,
+.bg-emerald-950 h1, .bg-emerald-950 h2, .bg-emerald-950 h3, .bg-emerald-950 h4,
+.bg-slate-900 h1, .bg-slate-900 h2, .bg-slate-900 h3, .bg-slate-900 h4,
+.bg-slate-950 h1, .bg-slate-950 h2, .bg-slate-950 h3, .bg-slate-950 h4 {
+  color: #ffffff;
+}
+
+/* Light muted text on dark green/navy containers */
+.bg-\[\#014421\] .text-slate-400, .bg-\[\#014421\] .text-slate-500, .bg-\[\#014421\] .text-emerald-200\/70,
+.bg-\[\#012d15\] .text-slate-400, .bg-\[\#012d15\] .text-slate-500,
+.bg-emerald-950 .text-slate-400, .bg-slate-900 .text-slate-400 {
+  color: #cbd5e1 !important;
+}
+
+/* 7. Primary Green & Navy Action Buttons */
+.bg-\[\#014421\], button.bg-\[\#014421\], a.bg-\[\#014421\],
+.bg-emerald-800, button.bg-emerald-800, .bg-emerald-700, button.bg-emerald-700 {
+  color: #ffffff !important;
+}
+
+/* 8. Light/Secondary Outline Buttons */
+:not(.dark) button.bg-white, :not(.dark) button.bg-slate-100, :not(.dark) button.bg-slate-200 {
+  color: #1B2A41 !important;
+}
+
+/* 9. Gold / Accent elements contrast */
+.text-amber-500, .text-amber-400, .text-yellow-500, .text-yellow-400 {
+  font-weight: 600;
+}
+
+/* Custom crisp scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #014421;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #013318;
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "LCMS PRO - Lightway Cooperative Management System",
+  "description": "Enterprise Cloud Cooperative Management System for Nigerian Cooperative Societies featuring secure authentication, 9 role-based access levels, role-specific dashboards, and a complete modular database architecture.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
