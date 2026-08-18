@@ -9,10 +9,10 @@ on:
   workflow_dispatch:
 
 env:
-  # Live hosted Cloud Run backend URL, baked into every build so the
-  # packaged Android/Desktop apps can reach it (relative /api/... paths
-  # only work inside AI Studio's own preview, not in an installed app).
-  VITE_API_BASE_URL: https://ais-pre-tlygtnnfotkansywrv34pg-524293212802.europe-west2.run.app
+  # Live, permanently published AI Studio app URL, baked into every build
+  # so the packaged Android/Desktop apps can reach it (relative /api/...
+  # paths only work inside AI Studio's own preview, not in an installed app).
+  VITE_API_BASE_URL: https://lcms-pro-lightway1.ai.studio
 
 jobs:
   # ------------------------------------------------------------------

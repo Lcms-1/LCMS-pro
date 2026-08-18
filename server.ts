@@ -74,6 +74,20 @@ async function startServer() {
   app.use(express.json({ limit: '25mb' }));
   app.use(express.urlencoded({ limit: '25mb', extended: true }));
 
+  // CORS: allow requests from the packaged Android/Desktop apps.
+  // Those apps load from a different origin (e.g. https://localhost or
+  // capacitor://localhost) than this server, so without these headers
+  // the browser blocks every request with no clear error message.
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(204);
+    }
+    next();
+  });
+
   // In-memory state for runtime operations
   let usersStore: User[] = [...INITIAL_USERS];
   let auditLogsStore: AuditLog[] = [...INITIAL_AUDIT_LOGS];
